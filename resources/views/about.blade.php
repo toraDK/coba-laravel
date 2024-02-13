@@ -9,9 +9,9 @@
 </head>
 <body>
     <h1>About Me</h1>
-    <p>Name : Tora Dogda Kristiawan</p>
-    <p>Emaail : toradigda@gmail.com</p>
-    <img src="img/test.jpg" alt="tora digda kristiawan" style="width: 500px">
+    <p>Name : @php Echo $name; @endphp</p>
+    <p>Emaail : @php Echo $email; @endphp</p>
+    <img src="img/@php Echo $image; @endphp" alt="@php Echo $name; @endphp" style="width: 500px">
 
     <script src="js/script.js"></script>
 </body>

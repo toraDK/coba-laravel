@@ -19,7 +19,11 @@ Route::get('/', function () {
 
 
 Route::get('/about', function () {
-    return view('about');
+    return view('about', [
+        "name" => "Tora Digda Kristiawan",
+        "email" => "toradigda@gmail.com",
+        "image" => "test.jpg"
+    ]);
 });
 
 Route::get('/blog', function () {
