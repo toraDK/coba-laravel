@@ -9,5 +9,8 @@
 </head>
 <body>
     <h1>my blog</h1>
+
+
+    <script src="js/script.js"></script>
 </body>
 </html>

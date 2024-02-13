@@ -9,10 +9,10 @@
 </head>
 <body>
     <h1>About Me</h1>
-    <p>Name : @php Echo $name; @endphp</p>
-    <p>Emaail : @php Echo $email; @endphp</p>
-    <img src="img/@php Echo $image; @endphp" alt="@php Echo $name; @endphp" style="width: 500px">
+    <p>Name : {{ $name }} </p>
+    <p>Emaail : {{ $email }} </p>
+    <img src="img/{{ $image }} " alt="{{ $name }} " style="width: 500px">
 
-    <script src="js/script.js"></script>
+    
 </body>
 </html>
