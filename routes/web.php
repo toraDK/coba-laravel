@@ -14,18 +14,47 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        "title" => "home"
+    ]);
 });
 
 
 Route::get('/about', function () {
     return view('about', [
+        "title" => "about",
         "name" => "Tora Digda Kristiawan",
         "email" => "toradigda@gmail.com",
         "image" => "test.jpg"
     ]);
 });
 
+
+
 Route::get('/blog', function () {
+
+    $blog_post = [
+        [
+            "title" => "Judul Post Pertama",
+            "slug" => "judul-post-pertama",
+            "author" => "Tora Digda K",
+            "body" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio temporibus quam totam. Explicabo, numquam quod nam est omnis dolor, laborum velit cupiditate impedit suscipit quisquam quas pariatur beatae eos maxime."
+        ],
+        [
+            "title" => "Judul Post Kedua",
+            "slug" => "judul-post-kedua",
+            "author" => "Tora Digda K",
+            "body" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio temporibus quam totam. Explicabo, numquam quod nam est omnis dolor, laborum velit cupiditate impedit suscipit quisquam quas pariatur beatae eos maxime."
+        ]
+    ];
+
+    return view('posts', [
+        "title" => "blog",
+        "post" => $blog_post
+    ]);
+});
+
+//halaman singel post
+Route::get('post/{slug}', function ($slug) {
     return view('post');
 });
