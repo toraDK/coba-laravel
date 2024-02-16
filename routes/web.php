@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,55 +33,7 @@ Route::get('/about', function () {
 
 
 
-Route::get('/blog', function () {
-
-    $blog_post = [
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Tora Digda K",
-            "body" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio temporibus quam totam. Explicabo, numquam quod nam est omnis dolor, laborum velit cupiditate impedit suscipit quisquam quas pariatur beatae eos maxime."
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Tora Digda K",
-            "body" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio temporibus quam totam. Explicabo, numquam quod nam est omnis dolor, laborum velit cupiditate impedit suscipit quisquam quas pariatur beatae eos maxime."
-        ]
-    ];
-
-    return view('posts', [
-        "title" => "blog",
-        "post" => $blog_post
-    ]);
-});
+Route::get('/blog', [PostController::class, 'index']);
 
 //halaman singel post
-Route::get('post/{slug}', function ($slug) {
-
-    $blog_post = [
-        [
-            "title" => "Judul Post Pertama",
-            "slug" => "judul-post-pertama",
-            "author" => "Tora Digda K",
-            "body" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio temporibus quam totam. Explicabo, numquam quod nam est omnis dolor, laborum velit cupiditate impedit suscipit quisquam quas pariatur beatae eos maxime."
-        ],
-        [
-            "title" => "Judul Post Kedua",
-            "slug" => "judul-post-kedua",
-            "author" => "Tora Digda K",
-            "body" => "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio temporibus quam totam. Explicabo, numquam quod nam est omnis dolor, laborum velit cupiditate impedit suscipit quisquam quas pariatur beatae eos maxime."
-        ]
-    ];
-
-    foreach($blog_post as $post){
-        if($post["slug"] === $slug){
-            $new_post = $post;
-        }
-    }
-
-    return view('post', [
-        "title" => "Single Post",
-        "post" => $new_post
-    ]);
-});
+Route::get('post/{slug}', [PostController::class, 'show']);
