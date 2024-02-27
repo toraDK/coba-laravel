@@ -38,7 +38,7 @@ Route::get('/about', function () {
 Route::get('/blog', [PostController::class, 'index']);
 
 //halaman singel post
-Route::get('post/{post:slug}', [PostController::class, 'show']);
+Route::get('post/{posts:slug}', [PostController::class, 'show']);
 
 Route::get('/categories',  function(){
     return view('categories', [
