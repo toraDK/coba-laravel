@@ -5,7 +5,6 @@
 
 <h1 class="mb-5">{{ $title }}</h1>
 
-@if ($post->count())
 <div class="card mb-3">
     <img src="..." class="card-img-top" alt="...">
     <div class="card-body">
@@ -14,11 +13,6 @@
       <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
     </div>
   </div>
-@else 
-  <p>No post Found</p>
-@endif
-
-
 
     @foreach ($post as $post)
         <article class="mb-5 border-bottom pb-4">

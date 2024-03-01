@@ -13,7 +13,7 @@ class PostController extends Controller
             "title" => "All Posts",
             // "post" => Post::all()
             "post" => Post::with(['author', 'category'])->latest()->get()
-        ]);
+    ]);
     }
 
     public function show(Post $post)
