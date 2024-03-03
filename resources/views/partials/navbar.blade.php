@@ -8,7 +8,7 @@
             <div class="navbar-nav">
                 <a class="nav-link {{ ($active === "home") ? 'active' : '' }}" href="/">Home</a>
                 <a class="nav-link {{ ($active === "about") ? 'active' : '' }}" href="/about">about</a>
-                <a class="nav-link {{ ($active === "posts") ? 'active' : '' }}" href="/posts">Posts</a>
+                <a class="nav-link {{ ($active === "posts") ? 'active' : '' }}" href="/posts">blog</a>
                 <a class="nav-link {{ ($active === "categories") ? 'active' : '' }}" href="/categories">categories   </a>
             </div>
         </div>
