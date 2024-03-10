@@ -6,28 +6,46 @@
 </div>
 
 
+
 <div class="col-md-8">
-    <form method="post" action="/dashboard/posts">
+    <form method="post" action="/dashboard/posts" class="mb-5">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="title" class="form-control" id="title" placeholder="title" name="title">
+            <input type="title" class="form-control @error('title') is-invalid @enderror" id="title" placeholder="title" name="title" required autofocus value="{{ old('title') }}">
+            @error('title')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="slug" class="form-label">Slug</label>
-            <input type="slug" class="form-control" id="slug" placeholder="slug" name="slug">
+            <input type="slug" class="form-control @error('slug') is-invalid @enderror" id="slug" placeholder="slug" name="slug" required value="{{ old('slug') }}">
+            @error('slug')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
             <select class="form-select" name="category_id">
                 @foreach ($categories as $category)
+                @if (old('category_id') == $category->id)
+                    <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    
+                @endif
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
         <div class="mb-3">
             <label for="body" class="form-label">Body</label>
-            <input id="body" type="hidden" name="content">
+            @error('body')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
+            <input id="body" type="hidden" name="body" value="{{ old('body') }}">
             <trix-editor input="body"></trix-editor>
         </div>
 
@@ -39,7 +57,7 @@
 
 <script>
     const title = document.querySelector('#title');
-    const slug = document.querySelector9('#slug');
+    const slug = document.querySelector('#slug');
 
     title.addEventListener('change', function () {
         fetch('/dashboard/checkSlug?title=' + title.value)
